@@ -1,0 +1,113 @@
+[ec2-user@ip-172-30-4-185 lambda-docker]$ sam deploy
+
+                Managed S3 bucket: aws-sam-cli-managed-default-samclisourcebucket-xrnilu2wpgpw
+                A different default S3 bucket can be set in samconfig.toml
+                Or by specifying --s3-bucket explicitly.
+97db3d867a8c: Pushed 
+d15f51a7c85b: Pushed 
+aa99e735b273: Pushed 
+f5838fa24273: Pushed 
+be9e099f169c: Pushed 
+0091b0f618e4: Pushed 
+48d34c655917: Pushed 
+ffe8873f1aa1: Pushed 
+71de022b9e13: Pushed 
+helloworldfunction-dcf60dd8f993-python3.11-v1: digest: sha256:8a7ae314f0c359125e543dde4d996b995fed7aeed6912ff94fb50818d6fe3a7f size: 2204
+
+        Deploying with following values
+        ===============================
+        Stack name                   : lambda-docker
+        Region                       : us-east-1
+        Confirm changeset            : True
+        Disable rollback             : False
+        Deployment image repository  : 
+                                       {
+                                           "HelloWorldFunction": "376778049323.dkr.ecr.us-east-1.amazonaws.com/lambdadocker3ebfc112/helloworldfunction19d43fc4repo"
+                                       }
+        Deployment s3 bucket         : aws-sam-cli-managed-default-samclisourcebucket-xrnilu2wpgpw
+        Capabilities                 : ["CAPABILITY_IAM"]
+        Parameter overrides          : {}
+        Signing Profiles             : {}
+
+Initiating deployment
+=====================
+
+HelloWorldFunction has no authentication.
+        Uploading to 23842a20214fa091e17b36f084c49640.template  1314 / 1314  (100.00%)
+
+
+Waiting for changeset to be created..
+
+CloudFormation stack changeset
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Operation                                 LogicalResourceId                         ResourceType                              Replacement                             
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Add                                     HelloWorldFunctionHelloWorldPermissionP   AWS::Lambda::Permission                   N/A                                     
+                                          rod                                                                                                                         
++ Add                                     HelloWorldFunctionRole                    AWS::IAM::Role                            N/A                                     
++ Add                                     HelloWorldFunction                        AWS::Lambda::Function                     N/A                                     
++ Add                                     ServerlessRestApiDeployment47fc2d5f9d     AWS::ApiGateway::Deployment               N/A                                     
++ Add                                     ServerlessRestApiProdStage                AWS::ApiGateway::Stage                    N/A                                     
++ Add                                     ServerlessRestApi                         AWS::ApiGateway::RestApi                  N/A                                     
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Changeset created successfully. arn:aws:cloudformation:us-east-1:376778049323:changeSet/samcli-deploy1733090892/e28ae201-9709-42c5-9e2e-5b7041d57a0f
+
+
+Previewing CloudFormation changeset before deployment
+======================================================
+Deploy this changeset? [y/N]: Y
+
+2024-12-01 22:24:23 - Waiting for stack create/update to complete
+
+CloudFormation events from stack operations (refresh every 5.0 seconds)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ResourceStatus                            ResourceType                              LogicalResourceId                         ResourceStatusReason                    
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE_IN_PROGRESS                        AWS::CloudFormation::Stack                lambda-docker                             User Initiated                          
+CREATE_IN_PROGRESS                        AWS::IAM::Role                            HelloWorldFunctionRole                    -                                       
+CREATE_IN_PROGRESS                        AWS::IAM::Role                            HelloWorldFunctionRole                    Resource creation Initiated             
+CREATE_COMPLETE                           AWS::IAM::Role                            HelloWorldFunctionRole                    -                                       
+CREATE_IN_PROGRESS                        AWS::Lambda::Function                     HelloWorldFunction                        -                                       
+CREATE_IN_PROGRESS                        AWS::Lambda::Function                     HelloWorldFunction                        Resource creation Initiated             
+CREATE_IN_PROGRESS -                      AWS::Lambda::Function                     HelloWorldFunction                        Eventual consistency check initiated    
+CONFIGURATION_COMPLETE                                                                                                                                                
+CREATE_IN_PROGRESS                        AWS::ApiGateway::RestApi                  ServerlessRestApi                         -                                       
+CREATE_IN_PROGRESS                        AWS::ApiGateway::RestApi                  ServerlessRestApi                         Resource creation Initiated             
+CREATE_COMPLETE                           AWS::ApiGateway::RestApi                  ServerlessRestApi                         -                                       
+CREATE_IN_PROGRESS                        AWS::Lambda::Permission                   HelloWorldFunctionHelloWorldPermissionP   -                                       
+                                                                                    rod                                                                               
+CREATE_IN_PROGRESS                        AWS::ApiGateway::Deployment               ServerlessRestApiDeployment47fc2d5f9d     -                                       
+CREATE_IN_PROGRESS                        AWS::Lambda::Permission                   HelloWorldFunctionHelloWorldPermissionP   Resource creation Initiated             
+                                                                                    rod                                                                               
+CREATE_COMPLETE                           AWS::Lambda::Permission                   HelloWorldFunctionHelloWorldPermissionP   -                                       
+                                                                                    rod                                                                               
+CREATE_IN_PROGRESS                        AWS::ApiGateway::Deployment               ServerlessRestApiDeployment47fc2d5f9d     Resource creation Initiated             
+CREATE_COMPLETE                           AWS::ApiGateway::Deployment               ServerlessRestApiDeployment47fc2d5f9d     -                                       
+CREATE_COMPLETE                           AWS::Lambda::Function                     HelloWorldFunction                        -                                       
+CREATE_IN_PROGRESS                        AWS::ApiGateway::Stage                    ServerlessRestApiProdStage                -                                       
+CREATE_IN_PROGRESS                        AWS::ApiGateway::Stage                    ServerlessRestApiProdStage                Resource creation Initiated             
+CREATE_COMPLETE                           AWS::ApiGateway::Stage                    ServerlessRestApiProdStage                -                                       
+CREATE_COMPLETE                           AWS::CloudFormation::Stack                lambda-docker                             -                                       
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CloudFormation outputs from deployed stack
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Outputs                                                                                                                                                                
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Key                 HelloWorldFunctionIamRole                                                                                                                          
+Description         Implicit IAM Role created for Hello World function                                                                                                 
+Value               arn:aws:iam::376778049323:role/lambda-docker-HelloWorldFunctionRole-QhR6cB7lJFom                                                                   
+
+Key                 HelloWorldApi                                                                                                                                      
+Description         API Gateway endpoint URL for Prod stage for Hello World function                                                                                   
+Value               https://tx76k6f0ck.execute-api.us-east-1.amazonaws.com/Prod/hello/                                                                                 
+
+Key                 HelloWorldFunction                                                                                                                                 
+Description         Hello World Lambda Function ARN                                                                                                                    
+Value               arn:aws:lambda:us-east-1:376778049323:function:lambda-docker-HelloWorldFunction-Y8DJ91A9ElOa                                                       
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Successfully created/updated stack - lambda-docker in us-east-1
